@@ -2,9 +2,53 @@ import React from 'react'
 
 class MovieList extends React.Component {
 
+  // state = {
+  //   count: 0
+  // }
+
+  // using state via constructor()
+  // providing props is good practice
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0
+    }
+  }
+
+
+  increment = () => {
+    // const count = this.state.count
+    //accessing state.count via destructuring
+    const {count} = this.state.count;
+
+    // VERY BAD
+    // this.state.count = count + 1
+
+    // for debugging, app will stop at this point
+    //debugger
+
+    this.setState((state) => {
+      return {count: state.count + 1}
+    })
+  }
+
+  decrement = () => {
+    const {count} = this.state.count;
+    this.setState((state) => {
+      return {count: this.state.count - 1}
+    })
+  }
+
+
   render() {
     return (
       <>
+        <div>
+          <button onClick={this.increment} className="btn btn-primary">Increment</button>
+          <button onClick={this.decrement} className="btn btn-primary">Decrement</button>
+          <h1>{this.state.count}</h1>
+        </div>
+
         <div className="col-lg-4 col-md-6 mb-4">
           <div className="card h-100">
             <a href="#"><img className="card-img-top" src="http://placehold.it/700x400" alt=""/></a>
