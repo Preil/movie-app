@@ -1,4 +1,3 @@
-
 const MOVIE_DATA = [
   {
     id: '1',
@@ -29,6 +28,11 @@ const MOVIE_DATA = [
   }
 ]
 
-export const getMovies = () =>{
-  return MOVIE_DATA
+export const getMovies = () => {
+
+  // simulating fetching data from a server with some delay
+  setTimeout(() => {
+    return MOVIE_DATA
+  }, 2000)
+
 }
