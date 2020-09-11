@@ -14,9 +14,24 @@ import {getMovies} from "../actions";
 const Home = () => {
 
   const [movies, setMovies] = useState([]);
-  getMovies().then((movies) => {
-    setMovies(movies);
-  })
+  const [count, setCount] = useState(0);
+
+  // this approach may work with extra unnecessary loops
+
+  // getMovies().then((movies) => {
+  //   setMovies(movies);
+  //   console.log('getting movies called')
+  // })
+
+  // UseEffect watch for count changes
+  // and if there is changes it run its callback function
+  useEffect(()=>{
+    getMovies().then((movies) => {
+      setMovies(movies);
+      console.log('getting movies called')
+    })
+  }, [count])
+
 
   return (
     <div>
@@ -41,6 +56,7 @@ const Home = () => {
 
         <div className="container">
           <div className="row">
+            <button onClick={()=>setCount(count+1)}>Click me!</button>
             <div className="col-lg-3">
               <Sidebar/>
             </div>
