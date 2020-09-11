@@ -30,9 +30,9 @@ const MOVIE_DATA = [
 
 export const getMovies = () => {
 
-  // simulating fetching data from a server with some delay
-  setTimeout(() => {
-    return MOVIE_DATA
-  }, 2000)
-
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(MOVIE_DATA)
+    }, 2000)
+  })
 }

@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+import {useState, useEffect} from 'react'
+
 import Navbar from '../components/navbar'
 import Sidebar from '../components/sidebar'
 import Carousel from '../components/carousel'
@@ -11,7 +13,11 @@ import {getMovies} from "../actions";
 
 const Home = () => {
 
-  const movies = getMovies() || []
+  const [movies, setMovies] = useState([]);
+  getMovies().then((movies) => {
+    setMovies(movies);
+  })
+
   return (
     <div>
       <Head>

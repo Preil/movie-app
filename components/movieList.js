@@ -9,6 +9,7 @@ class MovieList extends React.Component {
     return text
   }
 
+
   render() {
     const {movies} = this.props;
     return (
