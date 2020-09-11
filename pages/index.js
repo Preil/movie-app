@@ -13,13 +13,19 @@ import {getMovies} from "../actions";
 
 class Home extends React.Component {
 
-  state = {
-    movies:[]
+  constructor(props) {
+    super(props)
+    this.state = {
+      movies: []
+    }
   }
 
-  async componentDidMount() {
-    const movies = await getMovies()
-    this.setState({movies})
+  componentDidMount() {
+    getMovies().then((movies) => {
+      this.setState({movies})
+    }).catch((err)=>{
+      console.log(err)
+    })
   }
 
   render() {
