@@ -13,25 +13,33 @@ import {getMovies} from "../actions";
 
 class Home extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      movies: [],
-      errorMessage: ''
+  static async getInitialProps() {
+    const movies = await getMovies()
+    return {
+      movies: movies
     }
   }
 
-  componentDidMount() {
-    getMovies().then((movies) => {
-      this.setState({movies})
-    }).catch((err) => {
-      console.log(err)
-      this.setState({errorMessage: err})
-    })
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     movies: [],
+  //     errorMessage: ''
+  //   }
+  // }
+
+  // Is called only on Client (Browse)
+  // componentDidMount() {
+  //   getMovies().then((movies) => {
+  //     this.setState({movies})
+  //   }).catch((err) => {
+  //     console.log(err)
+  //     this.setState({errorMessage: err})
+  //   })
+  // }
 
   render() {
-    const {movies, errorMessage} = this.state
+    const {movies} = this.props;
     return (
       <div>
         <Head>
@@ -62,11 +70,6 @@ class Home extends React.Component {
                 <Carousel/>
 
                 <div className="row">
-                  {errorMessage &&
-                    <div className="alert alert-danger">
-                      {errorMessage}
-                    </div>
-                  }
                   <MovieList movies={movies}/>
                 </div>
               </div>
