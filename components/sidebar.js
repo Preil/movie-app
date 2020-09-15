@@ -2,17 +2,18 @@ import { useState } from 'react'
 
 
 
-const Sidebar = () => {
-
-
+const Sidebar = (props) => {
+  const {categories} = props
   return (
     <>
       <h1 className="my-4">Shop Name</h1>
       <div className="list-group">
-        <a href="#" className="list-group-item">Category 1</a>
-        <a href="#" className="list-group-item">Category 2</a>
-        <a href="#" className="list-group-item">Category 3</a>
-      </div>
+        {categories.map((category)=>{
+          return (
+            <a key={category.id} href="#" className="list-group-item">{category.name}</a>
+          )
+        })}
+        </div>
     </>
   )
 }
