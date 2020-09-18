@@ -29,8 +29,10 @@ const Modal = (props) => {
               <button ref={ele => closeButton = ele} type="button" className="btn btn-secondary"
                       data-dismiss="modal">Close
               </button>
-              <button onClick={submitModal} type="button" className="btn btn-primary">Save changes</button>
-            </div>
+              {
+                props.hasSubmit && <button onClick={submitModal} type="button" className="btn btn-primary">Save changes</button>
+              }
+              </div>
           </div>
         </div>
       </div>

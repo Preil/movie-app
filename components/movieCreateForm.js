@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 
-const MovieCreateForm = () => {
+const MovieCreateForm = (props) => {
 
   const [form, setForm] = useState({
     name: 'Some Movie',
@@ -30,6 +30,10 @@ const MovieCreateForm = () => {
       ...form,
       genre: value.toString()
     })
+  }
+
+  const submitForm = ()=>{
+    props.handleFormSubmit({...form})
   }
 
   return (
@@ -115,6 +119,8 @@ const MovieCreateForm = () => {
           <option>action</option>
         </select>
       </div>
+      <button onClick={submitForm} type="button" className="btn btn-primary">Add movie
+      </button>
     </form>
   )
 }
