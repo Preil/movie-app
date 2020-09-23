@@ -33,16 +33,6 @@
     "cover": "https://images.unsplash.com/photo-1524489567901-304e41e41d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
   },
   {
-    "name": "Film",
-    "description": "Description of the film",
-    "rating": "5",
-    "image": "hsdfjkkdjk",
-    "cover": "dhsfjkkodjsgj",
-    "longDesc": "dfjsadjkfnkdjsfnkjasdnfjkasd",
-    "genre": "adventure",
-    "id": "snqmbtk"
-  },
-  {
     "name": "New movie",
     "description": "ha-ha",
     "rating": "",
