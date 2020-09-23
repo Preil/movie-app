@@ -1,12 +1,18 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 const MovieCreateForm = (props) => {
 
+  useEffect(() => {
+    if (props.initialData) {
+      setForm(props.initialData)
+    }
+  }, [props.initialData]);
+
   const [form, setForm] = useState({
     name: '',
     description: '',
-    rating:'',
+    rating: '',
     image: '',
     cover: '',
     longDesc: '',
@@ -38,14 +44,13 @@ const MovieCreateForm = (props) => {
     })
   }
 
-  const submitForm = ()=>{
+  const submitForm = () => {
     props.handleFormSubmit({...form})
   }
 
   return (
     <form>
-      {JSON.stringify(form)}
-      <div className="form-group">
+      <div key={props.name} className="form-group">
         <label htmlFor="name">Name</label>
         <input
           onChange={handleChange}
