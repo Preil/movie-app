@@ -1,15 +1,9 @@
 import {useState, useEffect} from 'react'
 
-
 const MovieCreateForm = (props) => {
 
-  useEffect(() => {
-    if (props.initialData) {
-      setForm(props.initialData)
-    }
-  }, [props.initialData]);
-
   const [form, setForm] = useState({
+    id:'',
     name: '',
     description: '',
     rating: '',
@@ -17,8 +11,13 @@ const MovieCreateForm = (props) => {
     cover: '',
     longDesc: '',
     genre: ''
-
   })
+
+  useEffect(() => {
+    if (props.initialData) {
+      setForm(props.initialData)
+    }
+  }, [props.initialData]);
 
   const handleChange = (event) => {
     const target = event.target;
@@ -50,7 +49,7 @@ const MovieCreateForm = (props) => {
 
   return (
     <form>
-      <div key={props.name} className="form-group">
+      <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
           onChange={handleChange}
